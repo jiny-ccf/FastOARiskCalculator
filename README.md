@@ -3,8 +3,8 @@
 ### Advanced sample size calculation for clinical trials enriched with high-risk patients
 
 [![R](https://img.shields.io/badge/R-4.x-276DC3?logo=r)](https://www.r-project.org/)
-[![Shiny](https://img.shields.io/badge/Shiny-Interactive%20App-1f9e89)](https://shiny.posit.co/)
-[![License](https://img.shields.io/github/license/jiny-ccf/FastOARiskCalculator)](LICENSE)
+[![Shiny](https://img.shields.io/badge/Shiny-Interactive%20App-1f9e89)](https://yuxuanjin.shinyapps.io/samplesizecalculator/)
+[![License](https://img.shields.io/github/license/jiny-ccf/FastOARiskCalculator)](MITLICENSE)
 [![GitHub](https://img.shields.io/github/stars/jiny-ccf/FastOARiskCalculator?style=social)](https://github.com/jiny-ccf/FastOARiskCalculator)
 
 > **Design clinical trials around the patients most likely to experience the outcome.**
@@ -81,55 +81,6 @@ This creates a direct connection between **risk-model performance** and **clinic
 
 ---
 
-## Interactive calculator
-
-### One Risk Threshold
-
-The first analysis evaluates a single risk threshold.
-
-Users specify the expected event rate, sensitivity, specificity, relative risk, power, alpha level, and sidedness of the hypothesis test.
-
-The application then reports the required:
-
-**Screen → Identify high-risk participants → Enroll → Conduct trial**
-
-sample sizes.
-
----
-
-### Multiple Risk Thresholds
-
-The second analysis evaluates multiple candidate risk thresholds simultaneously.
-
-This makes it possible to explore the trade-off between:
-
-* sensitivity
-* specificity
-* proportion of patients identified as high risk
-* event enrichment
-* enrollment requirements
-* total screening burden
-
-For example:
-
-```text
-Lower threshold
-      │
-      ├── More patients identified
-      ├── Higher sensitivity
-      └── Potentially less enrichment
-              
-Higher threshold
-      │
-      ├── Fewer patients identified
-      ├── Lower sensitivity
-      └── Potentially greater enrichment
-```
-
-The application visualizes how the required screening and enrollment populations change as the risk threshold changes.
-
----
-
 ## Statistical workflow
 
 The core calculation follows a simple sequence.
@@ -139,11 +90,10 @@ The core calculation follows a simple sequence.
 Given the baseline event rate, sensitivity, and specificity:
 
 $$
-P(\text{high risk})
-=
-P(Y=1)\times Sensitivity
+P(\text{High Risk}) =
+P(Y=1) \times \mathrm{Sensitivity}
 +
-P(Y=0)\times(1-Specificity)
+P(Y=0) \times (1-\mathrm{Specificity})
 $$
 
 ---
