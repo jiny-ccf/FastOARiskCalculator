@@ -4,7 +4,6 @@
 
 [![R](https://img.shields.io/badge/R-4.x-276DC3?logo=r)](https://www.r-project.org/)
 [![Shiny](https://img.shields.io/badge/Shiny-Interactive%20App-1f9e89)](https://yuxuanjin.shinyapps.io/samplesizecalculator/)
-[![License](https://img.shields.io/github/license/jiny-ccf/FastOARiskCalculator)](MITLICENSE)
 
 > **Design clinical trials around the patients most likely to experience the outcome.**
 
@@ -77,100 +76,6 @@ the calculator estimates:
 | **Screening sample size**  | Number of individuals who must be screened to obtain the required enrollment |
 
 This creates a direct connection between **risk-model performance** and **clinical trial feasibility**.
-
----
-
-## Statistical workflow
-
-The core calculation follows a simple sequence.
-
-### 1. Estimate the proportion classified as high risk
-
-Given the baseline event rate, sensitivity, and specificity:
-
-$$
-P(\text{High Risk}) =
-P(Y=1) \times \mathrm{Sensitivity}
-+
-P(Y=0) \times (1-\mathrm{Specificity})
-$$
-
----
-
-### 2. Estimate the event rate among high-risk participants
-
-The expected event rate among participants classified as high risk is:
-
-$$
-P(Y=1 \mid H)
-=
-\frac{
-\mathrm{Sensitivity} \times P(Y=1)
-}{
-P(H)
-}
-$$
-
-This represents the enrichment achieved by selecting participants using the risk model.
-
----
-
-### 3. Apply the assumed treatment effect
-
-Given a specified relative risk:
-
-$$
-P_T = RR \times P_C
-$$
-
-where:
-
-* \(P_C\) = expected event rate in the enriched control group
-* \(P_T\) = expected event rate in the enriched treatment group
-* \(RR\) = assumed relative risk
-
----
-
-### 4. Calculate randomized trial sample size
-
-The required randomized enrollment is calculated using R's `power.prop.test()` for comparison of two proportions.
-
-The resulting per-group sample size is converted to total enrollment:
-
-$$
-N_{\text{enroll}} = 2n
-$$
-
----
-
-### 5. Calculate the screening population
-
-Finally, the required number of individuals to screen is obtained from:
-
-$$
-N_{\text{screen}}
-=
-\frac{N_{\text{enroll}}}
-{P(\text{high risk})}
-$$
-
-Thus:
-
-```text
-Risk model performance
-        ↓
-High-risk prevalence
-        ↓
-Event enrichment
-        ↓
-Control event rate
-        ↓
-Treatment event rate
-        ↓
-Trial enrollment
-        ↓
-Screening population
-```
 
 ---
 
@@ -303,42 +208,6 @@ It can be useful for:
 * communicating trial-design assumptions with clinical investigators
 
 It is not intended to replace a formal statistical analysis plan or protocol-specific sample-size calculation.
-
----
-
-## Important assumptions
-
-The calculator depends on several user-specified assumptions, including:
-
-* baseline event rate
-* sensitivity and specificity of the risk classifier
-* selected risk threshold
-* treatment effect expressed as relative risk
-* desired power
-* type I error
-* sidedness of the statistical test
-
-The resulting sample size is therefore **scenario-dependent**.
-
-In particular, the calculator does not automatically account for every feature of a real clinical trial, such as:
-
-* loss to follow-up
-* non-adherence
-* unequal randomization
-* covariate adjustment
-* interim analyses
-* competing risks
-* clustering
-* multiple primary endpoints
-* protocol deviations
-
-Additional inflation or protocol-specific methods may therefore be required for an actual trial.
-
----
-
-## Research software
-
-This repository is intentionally positioned as **reproducible research software**, rather than a general-purpose clinical decision-support system.
 
 ---
 
