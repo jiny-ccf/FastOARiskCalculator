@@ -5,7 +5,6 @@
 [![R](https://img.shields.io/badge/R-4.x-276DC3?logo=r)](https://www.r-project.org/)
 [![Shiny](https://img.shields.io/badge/Shiny-Interactive%20App-1f9e89)](https://yuxuanjin.shinyapps.io/samplesizecalculator/)
 [![License](https://img.shields.io/github/license/jiny-ccf/FastOARiskCalculator)](MITLICENSE)
-[![GitHub](https://img.shields.io/github/stars/jiny-ccf/FastOARiskCalculator?style=social)](https://github.com/jiny-ccf/FastOARiskCalculator)
 
 > **Design clinical trials around the patients most likely to experience the outcome.**
 
@@ -103,12 +102,12 @@ $$
 The expected event rate among participants classified as high risk is:
 
 $$
-P(Y=1 \mid \text{high risk})
+P(Y=1 \mid H)
 =
 \frac{
-Sensitivity\times P(Y=1)
+\mathrm{Sensitivity} \times P(Y=1)
 }{
-P(\text{high risk})
+P(H)
 }
 $$
 
