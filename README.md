@@ -157,16 +157,6 @@ The application should open automatically in your browser.
 
 ---
 
-## Research motivation
-
-The FastOA framework was developed to address a fundamental challenge in osteoarthritis treatment development: clinical trials may be conducted in populations where relatively few participants experience meaningful disease progression during the study period.
-
-The FastOA viewpoint proposes identifying people at high risk of rapidly developing post-traumatic OA and using this enriched population for prevention trials. In the published discussion, the authors note that selecting higher-risk participants can substantially reduce the sample size required compared with recruiting a broader population.
-
-This calculator operationalizes that idea from a **trial-design perspective**:
-
-> **How much can a clinical trial gain by enriching enrollment using a risk prediction model?**
-
 ---
 
 ## Publication
